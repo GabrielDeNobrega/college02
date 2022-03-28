@@ -2,29 +2,34 @@ package methods;
 
 public class BinarySearch {
 
-	public int PesquisaBinaria(int v[], int pesq) {
-		int intComeco = 0;
-		int intFinal = v.length - 1;
-		int meio;
+	public int binarySearch(int v[], int goalNumber) {
 
-		while (intComeco <= intFinal) {
+		int size = v.length;
+		int vStarts = 0;
+		int vEnds = size;
+		int middle;
 
-			meio = (intComeco + intFinal) / 2;
+		while (vStarts <= vEnds) {
 
-			if (pesq == v[meio])
+			middle = (vStarts + vEnds) / 2;
 
-				return meio;
+			if (goalNumber == v[middle]) {
 
-			else if (pesq < v[meio])
+				return middle;
 
-				intFinal = meio - 1;
+			} else if (goalNumber < v[middle]) {
 
-			else
+				vEnds = middle - 1;
 
-				intComeco = meio + 1;
+			} else {
+
+				vStarts = middle + 1;
+			}
 
 		}
+
 		return -1;
+
 	}
 
 }

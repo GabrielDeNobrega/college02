@@ -4,68 +4,68 @@ import java.util.Scanner;
 
 public class Menu {
 
-	public int Escolher(Scanner sc) {
+	public int escolher(Scanner sc) {
 
 		System.out.printf("***--- MENU ---***%n%n" + "**-- Digite o número da operação que deseja realizar --**%n%n");
-		System.out.printf("01 - Ordenar com Insertion Sort até o número 44 atingir o índice 6%n"
-				+ "     Terminar de ordenar o vetor com Selection Sort%n%n" + "02 - Realizar Binary Search%n%n");
+		System.out.printf("01 - Vetor ordenado com Insertion Sort até o número 44 atingir o índice 6%n"
+				+ "02 - Vetor ordenado com Selection Sort%n" + "03 - Realizar Binary Search%n"
+				+ "04 - Sair do Programa%n%n");
 		int escolha = sc.nextInt();
 
 		return escolha;
 	}
 
-	public void MenuMaster(int[] vetor, int escolha, Scanner sc) {
+	public void pesquisador(int[] vetor, Scanner sc) {
 
-		SelectionSort ss = new SelectionSort();
-		InsertionSort is = new InsertionSort();
 		BinarySearch bs = new BinarySearch();
 		Printer pr = new Printer();
 
-		int[] a = null;
-		int number;
+		int goalNum;
 
-		switch (escolha) {
+		System.out.println("Digite o número que deseja pesquisar: ");
+		goalNum = sc.nextInt();
+		bs.binarySearch(vetor, goalNum);
+		int position = bs.binarySearch(vetor, goalNum);
+		pr.imprimePesquisa(position, goalNum);
+		System.out.println();
 
-		case 1:
-			a = is.is(vetor);
-			pr.imprimeVetor(a);
-			ss.ss(a);
-			pr.imprimeVetor(a);
-			break;
-
-		case 2:
-
-			if (a == null) {
-
-				System.out.println("Ordene o vetor antes de pesquisar.");
-
-			}
-
-			System.out.println("Digite o número que deseja pesquisar: ");
-			number = sc.nextInt();
-			bs.PesquisaBinaria(a, number);
-			break;
-
-		default:
-			System.out.println("Escolha uma opção válida.");
-			break;
-		}
 	}
 
-	public void Repetidor(Scanner sc) {
+	public void repetidor(Scanner sc) {
+
+		SelectionSort ss = new SelectionSort();
+		InsertionSort is = new InsertionSort();
+		Printer pr = new Printer();
 
 		int[] vetor = { 15, 25, 32, 8, 5, 44, 9, 87 };
-		int aux = 0;
+		int[] vetorAux = new int[vetor.length];
+		int aux;
 
 		do {
 
-			MenuMaster(vetor, Escolher(sc), sc);
+			aux = escolher(sc);
 
-			System.out.printf("%nDeseja sair do programa? Digite 1.%n" + "Deseja continuar? Digite 2.%n");
-			aux = sc.nextInt();
-			System.out.println();
+			switch (aux) {
 
-		} while (aux != 1);
+			case 1:
+				vetorAux = is.is(vetor);
+				pr.imprimeVetor(vetorAux);
+				break;
+
+			case 2:
+				ss.ss(vetorAux);
+				pr.imprimeVetor(vetorAux);
+				break;
+
+			case 3:
+				pesquisador(vetorAux, sc);
+				break;
+
+			case 4:
+				break;
+			}
+
+		} while (aux != 4);
 
 	}
 
