@@ -2,9 +2,7 @@
   👽Data Structure - Exercise👽  
   </h1>
   
-  <h3>
-    This is just a repository I've created in order to save a very specific exercise from college.
-  </h3>
+ 
   
 <p align="center" width="100%">
   
@@ -14,12 +12,15 @@
 </p>
 
 ***
-
-# 🌳 Description
+<h1 align="center">
+ 🌳 Description 🌳
+    </h1>
+    
+   <h3>
+    This is just a repository I've created in order to save a very specific exercise from college.
+  </h3>
   
-  The same as what was said above.
   
-  </p>
 
 <h1 align="center">
   💡 Exercise 💡
